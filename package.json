@@ -1,0 +1,78 @@
+{
+  "name": "@neabyte/console-kit",
+  "version": "1.0.0",
+  "description": "Terminal UI toolkit for Node.js with animated spinners, custom colors, and text styling",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc && tsc-alias -f -fe .js && npm run minify",
+    "minify": "find dist -name '*.js' -exec terser {} --compress --mangle -o {} \\;",
+    "dev": "tsc --watch",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "format": "prettier --write src/**/*.ts",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run clean && npm run build",
+    "type-check": "tsc --noEmit",
+    "check-all": "npm run lint && npm run type-check"
+  },
+  "keywords": [
+    "terminal",
+    "cli",
+    "spinner",
+    "loading",
+    "animation",
+    "colors",
+    "ansi",
+    "typescript",
+    "nodejs",
+    "console",
+    "ui"
+  ],
+  "author": {
+    "name": "NeaByteLab",
+    "email": "me@neabyte.com",
+    "url": "https://github.com/NeaByteLab"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NeaByteLab/Console-Kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NeaByteLab/Console-Kit/issues"
+  },
+  "homepage": "https://github.com/NeaByteLab/Console-Kit#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.34.0",
+    "@types/node": "^24.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.41.0",
+    "@typescript-eslint/parser": "^8.41.0",
+    "eslint": "^9.34.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-sonarjs": "^3.0.5",
+    "prettier": "^3.6.2",
+    "terser": "^5.43.1",
+    "tsc-alias": "^1.8.16",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
