@@ -1,6 +1,6 @@
 {
   "name": "@neabyte/console-kit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Terminal UI toolkit for Node.js with animated spinners, custom colors, and text styling",
   "type": "module",
   "main": "dist/index.js",
@@ -74,5 +74,8 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@neabyte/console-kit": "file:neabyte-console-kit-1.1.0.tgz"
   }
 }

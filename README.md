@@ -1,10 +1,11 @@
 # Console Kit
 
-Enhanced terminal UI toolkit for Node.js with TypeScript support. Create beautiful, interactive command-line interfaces with spinners, custom colors, and advanced styling.
+Enhanced terminal UI toolkit for Node.js with TypeScript support. Create beautiful, interactive command-line interfaces with spinners, progress bars, custom colors, and advanced styling.
 
 ## ✨ Features
 
 - 🎯 **Spinners** - Beautiful terminal loading animations with 13 predefined styles
+- 📊 **Progress Bars** - Visual progress tracking with multiple styles and real-time updates
 - 🎨 **Advanced Colors** - 25 predefined colors + RGB + Hex + Background support
 - 🎭 **Text Styling** - Bold, italic, underline with full ANSI support
 - ⚡ **Performance** - Efficient rendering with minimal overhead
@@ -34,6 +35,17 @@ await processFiles()
 
 // Stop with success message
 await spinner.succeed('Files processed successfully!')
+
+// Create a progress bar
+const progress = ConsoleKit.progress('Uploading files...', { total: 100 })
+await progress.start()
+
+// Update progress
+progress.update(50)
+progress.increment(25)
+
+// Complete with success
+await progress.succeed('Upload complete!')
 ```
 
 ## 🎯 Spinner Usage
@@ -84,6 +96,133 @@ const spinner = ConsoleKit.spinner('Building...', {
 const customSpinner = ConsoleKit.spinner('Custom...', {
   spinner: ['🌍', '🌎', '🌏'] // Your own characters
 })
+```
+
+## 📊 Progress Bar Usage
+
+### Basic Progress Bar
+
+```typescript
+const progress = ConsoleKit.progress('Processing...', { total: 100 })
+await progress.start()
+
+// Update progress
+progress.update(50)
+progress.increment(25)
+
+// Complete
+await progress.succeed('Processing complete!')
+```
+
+### Advanced Customization
+
+```typescript
+const progress = ConsoleKit.progress('Building project...', {
+  total: 1000,
+  current: 0,
+  style: 'blocks', // Visual style
+  color: 'green', // Progress bar color
+  backgroundColor: '#1a1a1a', // Background color
+  bold: true, // Bold text
+  italic: false, // No italic
+  underline: true // Underlined text
+})
+```
+
+### Progress Bar Styles
+
+**Available Styles:**
+
+- `bar` - Solid filled bar with empty blocks (████████░░)
+- `blocks` - Square blocks pattern (▣▣▣▣▣▣▣▣▣▣)
+- `dots` - Circular dots pattern (●●●●●●○○○○)
+
+### Available Methods
+
+- `start(text?)` - Start the progress bar
+- `update(current)` - Set specific progress value
+- `increment(amount)` - Increase progress by amount
+- `complete()` - Set to 100% and display completion
+- `succeed(text?)` - Complete with success message ✔
+- `fail(text?)` - Complete with error message ✖
+- `warn(text?)` - Complete with warning message ⚠
+- `info(text?)` - Complete with info message ℹ
+- `stop()` - Stop the progress bar
+- `updateText(text)` - Update progress text while running
+
+### Real-World Examples
+
+**File Upload Progress:**
+
+```typescript
+const progress = ConsoleKit.progress('Uploading files...', {
+  total: files.length,
+  style: 'blocks',
+  color: 'blue'
+})
+
+await progress.start()
+
+for (let i = 0; i < files.length; i++) {
+  await uploadFile(files[i])
+  progress.update(i + 1)
+}
+
+await progress.succeed('All files uploaded!')
+```
+
+**Data Processing with Updates:**
+
+```typescript
+const progress = ConsoleKit.progress('Processing data...', {
+  total: 1000,
+  style: 'dots',
+  color: 'green'
+})
+
+await progress.start()
+
+// Process in batches
+for (let i = 0; i < 10; i++) {
+  await processBatch(i * 100, (i + 1) * 100)
+  progress.update((i + 1) * 100)
+
+  // Update text for each batch
+  progress.updateText(`Processing batch ${i + 1}/10...`)
+}
+
+await progress.succeed('Data processing complete!')
+```
+
+**Multiple Concurrent Progress Bars:**
+
+```typescript
+const tasks = [
+  { name: 'Task 1', total: 50, style: 'bar', color: 'green' },
+  { name: 'Task 2', total: 30, style: 'blocks', color: 'blue' },
+  { name: 'Task 3', total: 80, style: 'dots', color: 'yellow' }
+]
+
+const progressBars = tasks.map(task => ConsoleKit.progress(task.name, task))
+
+// Start all progress bars
+await Promise.all(progressBars.map(p => p.start()))
+
+// Update them concurrently
+const interval = setInterval(() => {
+  progressBars.forEach((p, i) => {
+    const current = Math.min(p.state.current + 5, p.state.total)
+    p.update(current)
+
+    if (current >= p.state.total) {
+      p.succeed(`${tasks[i].name} complete!`)
+    }
+  })
+
+  if (progressBars.every(p => p.state.current >= p.state.total)) {
+    clearInterval(interval)
+  }
+}, 200)
 ```
 
 ## 🎨 Color System
@@ -164,16 +303,44 @@ Creates a new spinner instance with optional configuration.
 
 **Returns:** Configured Spinner instance
 
+### ConsoleKit.progress(text, options)
+
+Creates a new progress bar instance with required configuration.
+
+**Parameters:**
+
+- `text` (string) - Initial text to display
+- `options` (ProgressOptions) - Configuration object (total is required)
+
+**Returns:** Configured Progress instance
+
 ### SpinnerOptions Interface
 
 ```typescript
 interface SpinnerOptions {
   text?: string // Display text
-  style?: styleList // Animation style
-  color?: colorList // Foreground color
+  style?: SpinnerAnimationStyle // Animation style
+  color?: ColorOption // Foreground color
   backgroundColor?: string // Background color
   show?: boolean // Visibility control
   spinner?: string[] // Custom animation frames
+  bold?: boolean // Bold text
+  italic?: boolean // Italic text
+  underline?: boolean // Underlined text
+}
+```
+
+### ProgressOptions Interface
+
+```typescript
+interface ProgressOptions {
+  text?: string // Display text
+  total: number // Total value (required)
+  current?: number // Current progress value
+  style?: ProgressBarStyle // Visual style
+  color?: ColorOption // Foreground color
+  backgroundColor?: string // Background color
+  show?: boolean // Visibility control
   bold?: boolean // Bold text
   italic?: boolean // Italic text
   underline?: boolean // Underlined text
@@ -208,9 +375,11 @@ src/
 ├── index.ts              # Main export file
 ├── core/                 # Core functionality
 │   ├── ConsoleKit.ts     # Main class with static methods
-│   └── Spinner.ts        # Spinner implementation
+│   ├── Spinner.ts        # Spinner implementation
+│   └── Progress.ts       # Progress bar implementation
 ├── interfaces/           # TypeScript type definitions
-│   └── Spinner.ts        # All spinner-related interfaces
+│   ├── Spinner.ts        # All spinner-related interfaces
+│   └── Progress.ts       # All progress bar interfaces
 └── utils/                # Utility functions
     └── Colors.ts         # Color and styling utilities
 ```
@@ -219,11 +388,21 @@ src/
 
 ## 🎯 Use Cases
 
+### Spinners
+
 - **Build Tools** - Show compilation progress
 - **CLI Applications** - User-friendly loading states
 - **Deployment Scripts** - Visual feedback for long operations
-- **Data Processing** - Progress indication for file operations
 - **API Clients** - Request status visualization
+
+### Progress Bars
+
+- **File Operations** - Upload/download progress
+- **Data Processing** - Batch processing progress
+- **Build Systems** - Compilation progress
+- **Database Operations** - Query execution progress
+- **Network Requests** - API call progress
+- **Installation Scripts** - Package installation progress
 
 ## 🔒 Type Safety
 

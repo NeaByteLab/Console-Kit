@@ -1,10 +1,12 @@
 /**
- * Available spinner animation styles for terminal loading indicators
+ * Available spinner animation patterns for terminal loading indicators
  *
- * Defines visual patterns for different spinner appearances including
- * various dot patterns and bar styles for terminal applications.
+ * Defines the visual animation patterns for spinners including:
+ * - 'dots': Basic dot animation (⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏)
+ * - 'bars': Bar-based animation patterns
+ * - 'dots2' through 'dots12': Various dot pattern variations
  */
-type styleList =
+export type SpinnerAnimationStyle =
   | 'dots'
   | 'bars'
   | 'dots2'
@@ -20,12 +22,12 @@ type styleList =
   | 'dots12'
 
 /**
- * Available color options for spinner text and animation
+ * Available color options for terminal text and animation
  *
  * Includes standard colors, bright variants, extended colors, and custom color support.
  * Supports named colors, hex codes, RGB values, and undefined for default behavior.
  */
-type colorList =
+export type ColorOption =
   | 'black'
   | 'red'
   | 'green'
@@ -64,9 +66,9 @@ export interface SpinnerOptions {
   /** Text to display alongside the spinner animation */
   text?: string | undefined
   /** Spinner animation style from predefined patterns */
-  style?: styleList | undefined
+  style?: SpinnerAnimationStyle | undefined
   /** Color of the spinner using ANSI color codes, hex codes, RGB values, or predefined color names */
-  color?: colorList | undefined
+  color?: ColorOption | undefined
   /** Background color for the spinner text */
   backgroundColor?: string | undefined
   /** Controls spinner visibility on the terminal */
@@ -110,9 +112,9 @@ export interface SpinnerOptionsInternal {
   /** Text to display alongside the spinner animation */
   text: string
   /** Spinner animation style from predefined patterns */
-  style: styleList
+  style: SpinnerAnimationStyle
   /** Color of the spinner using ANSI color codes */
-  color: colorList
+  color: ColorOption
   /** Background color for the spinner text */
   backgroundColor: string
   /** Controls spinner visibility on the terminal */

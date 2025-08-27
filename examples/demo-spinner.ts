@@ -7,17 +7,33 @@
 
 import { ConsoleKit } from '../src/index.ts'
 
-// Demo configuration
+/**
+ * Demo configuration settings for timing and delays
+ */
 const config = {
-  delay: 1500,        // 1.5 seconds between demos
-  longDelay: 3000,    // 3 seconds for longer demos
-  textDelay: 800      // 0.8 seconds for text updates
+  // Delay between different demo sections in milliseconds
+  delay: 1500,
+  // Delay for longer demos in milliseconds
+  longDelay: 3000,
+  // Delay for text updates in milliseconds
+  textDelay: 800
 }
 
-// Utility function for delays
+/**
+ * Utility function to create a delay using Promise-based setTimeout
+ * 
+ * @param ms - Duration to wait in milliseconds
+ * @returns Promise that resolves after the specified delay
+ */
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 // Demo 1: Basic Spinner
+/**
+ * Demo 1: Basic Spinner
+ * 
+ * Demonstrates a simple spinner with default configuration
+ * Shows basic loading animation with default text and colors
+ */
 async function demoBasicSpinner() {
   console.log('\n🎯 Demo 1: Basic Spinner')
   console.log('========================')
@@ -330,4 +346,12 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   runAllDemos()
 }
 
+/**
+ * Exports the main demo runner function for programmatic execution
+ * 
+ * Allows other modules to import and run the spinner demos
+ * @example
+ * import { runAllDemos } from './demo-spinner.ts'
+ * await runAllDemos()
+ */
 export { runAllDemos }
