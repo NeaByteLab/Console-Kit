@@ -13,6 +13,15 @@ export class Spinner {
   private state: SpinnerState
   /** Timer reference for animation loop */
   private intervalId: ReturnType<typeof setInterval> | null = null
+  /** Predefined spinner patterns for different animation styles */
+  private readonly SPINNER_PATTERNS: Record<string, readonly string[]> = {
+    dots: ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'],
+    corners: ['│', '┤', '┘', '└', '┐', '┌', '┴', '┬'],
+    arrows: ['←', '↖', '↑', '↗', '→', '↘', '↓', '↙'],
+    triangles: ['◢', '◣', '◤', '◥'],
+    circles: ['◐', '◑', '◒', '◓'],
+    stars: ['★', '☆', '✯', '✰']
+  }
   /** Default configuration options with fallback values */
   private readonly defaultOptions: SpinnerOptionsInternal = {
     text: '',
@@ -20,14 +29,27 @@ export class Spinner {
     color: 'cyan',
     backgroundColor: '',
     show: true,
-    spinner: ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'],
+    spinner: this.SPINNER_PATTERNS.dots as string[],
     bold: false,
     italic: false,
     underline: false
   }
 
   /**
+   * Gets the spinner pattern for the specified style
+   *
+   * @param style - The spinner animation style
+   * @returns Array of characters for the spinner animation
+   */
+  private getSpinnerPattern(style: string): string[] {
+    return (this.SPINNER_PATTERNS[style] as string[]) || this.SPINNER_PATTERNS.dots
+  }
+
+  /**
    * Creates a new spinner instance with the specified configuration
+   *
+   * Merges provided options with default values to create a fully configured spinner.
+   * All optional properties use sensible defaults when not specified.
    *
    * @param options - Configuration options for spinner appearance and behavior
    */
@@ -38,7 +60,7 @@ export class Spinner {
       color: options.color ?? this.defaultOptions.color,
       backgroundColor: options.backgroundColor ?? this.defaultOptions.backgroundColor,
       show: options.show ?? this.defaultOptions.show,
-      spinner: options.spinner ?? this.defaultOptions.spinner,
+      spinner: options.spinner ?? this.getSpinnerPattern(options.style ?? 'dots'),
       bold: options.bold ?? this.defaultOptions.bold,
       italic: options.italic ?? this.defaultOptions.italic,
       underline: options.underline ?? this.defaultOptions.underline
@@ -54,6 +76,9 @@ export class Spinner {
 
   /**
    * Starts the spinner animation with optional text update
+   *
+   * Begins the animation loop and displays the spinner on the terminal.
+   * If text is provided, it updates the current spinner text before starting.
    *
    * @param text - Optional text to display with the spinner (overrides existing text if provided)
    */

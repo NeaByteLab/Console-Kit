@@ -19,7 +19,12 @@ const config = {
   textDelay: 500
 }
 
-// Utility function for delays
+/**
+ * Utility function for creating delays
+ * 
+ * @param ms - Duration to wait in milliseconds
+ * @returns Promise that resolves after the specified delay
+ */
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 // Demo 1: Basic Progress Bar
@@ -50,7 +55,12 @@ async function demoBasicProgress() {
   await progress.succeed('Upload complete!')
 }
 
-// Demo 2: Different Progress Styles
+/**
+ * Demo 2: Different Progress Styles
+ * 
+ * Demonstrates all available progress bar visual styles
+ * Shows how each style creates different visual representations
+ */
 async function demoProgressStyles() {
   console.log('\n✨ Demo 2: Different Progress Styles')
   console.log('=====================================')
@@ -84,7 +94,12 @@ async function demoProgressStyles() {
   }
 }
 
-// Demo 3: Progress with Colors and Styling
+/**
+ * Demo 3: Progress with Colors and Styling
+ * 
+ * Demonstrates progress bar customization with colors and text effects
+ * Shows how to apply RGB colors, hex backgrounds, and text styling
+ */
 async function demoProgressStyling() {
   console.log('\n🎨 Demo 3: Progress with Colors and Styling')
   console.log('=============================================')
@@ -113,7 +128,12 @@ async function demoProgressStyling() {
   await progress.succeed('Styling test complete!')
 }
 
-// Demo 4: Progress Methods
+/**
+ * Demo 4: Progress Methods
+ * 
+ * Demonstrates different progress update methods
+ * Shows increment and complete methods for progress management
+ */
 async function demoProgressMethods() {
   console.log('\n🔧 Demo 4: Progress Methods')
   console.log('============================')
@@ -140,7 +160,12 @@ async function demoProgressMethods() {
   await progress.complete()
 }
 
-// Demo 5: Progress States
+/**
+ * Demo 5: Progress States
+ * 
+ * Demonstrates different completion states for progress bars
+ * Shows warning and failure states with appropriate messaging
+ */
 async function demoProgressStates() {
   console.log('\n🎯 Demo 5: Progress States')
   console.log('===========================')
@@ -171,7 +196,12 @@ async function demoProgressStates() {
   await progress2.fail('Operation failed')
 }
 
-// Demo 6: Progress with Text Updates
+/**
+ * Demo 6: Progress with Text Updates
+ * 
+ * Demonstrates real-time text updates during progress operation
+ * Shows how to change progress text while maintaining the bar
+ */
 async function demoProgressTextUpdates() {
   console.log('\n📝 Demo 6: Progress with Text Updates')
   console.log('======================================')
@@ -206,7 +236,12 @@ async function demoProgressTextUpdates() {
   await progress.succeed('Process complete!')
 }
 
-// Demo 7: Progress with Custom Values
+/**
+ * Demo 7: Progress with Custom Values
+ * 
+ * Demonstrates progress bar with larger total values
+ * Shows how progress bars handle different scale operations
+ */
 async function demoProgressCustomValues() {
   console.log('\n🔢 Demo 7: Progress with Custom Values')
   console.log('=======================================')
@@ -228,7 +263,12 @@ async function demoProgressCustomValues() {
   await progress.succeed('All items processed!')
 }
 
-// Demo 8: Progress Bar Showcase
+/**
+ * Demo 8: Progress Bar Showcase
+ * 
+ * Comprehensive demonstration of different progress scenarios
+ * Shows various use cases with different configurations
+ */
 async function demoProgressShowcase() {
   console.log('\n🌟 Demo 8: Progress Bar Showcase')
   console.log('=================================')
@@ -262,7 +302,12 @@ async function demoProgressShowcase() {
   }
 }
 
-// Main demo runner
+/**
+ * Main demo runner function
+ * 
+ * Executes all progress bar demonstrations in sequence
+ * Provides comprehensive testing of ConsoleKit progress features
+ */
 async function runAllDemos() {
   console.log('🎬 Console-Kit Progress Bar Comprehensive Demo')
   console.log('==============================================')
@@ -301,4 +346,12 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   runAllDemos()
 }
 
+/**
+ * Exports the main demo runner function for programmatic execution
+ * 
+ * Allows other modules to import and run the progress bar demos
+ * @example
+ * import { runAllDemos } from './demo-progress.ts'
+ * await runAllDemos()
+ */
 export { runAllDemos }

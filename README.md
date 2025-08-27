@@ -4,7 +4,7 @@ Enhanced terminal UI toolkit for Node.js with TypeScript support. Create beautif
 
 ## ✨ Features
 
-- 🎯 **Spinners** - Beautiful terminal loading animations with 13 predefined styles
+- 🎯 **Spinners** - Beautiful terminal loading animations with 6 predefined styles
 - 📊 **Progress Bars** - Visual progress tracking with multiple styles and real-time updates
 - 🎨 **Advanced Colors** - 25 predefined colors + RGB + Hex + Background support
 - 🎭 **Text Styling** - Bold, italic, underline with full ANSI support
@@ -86,9 +86,12 @@ const spinner = ConsoleKit.spinner('Building...', {
 
 **Predefined Styles:**
 
-- `dots` - Classic dot animation (default)
-- `bars` - Bar animation
-- `dots2` through `dots12` - Various dot patterns
+- `dots` - Classic dot animation (default) ⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏
+- `corners` - Elegant corner rotation │┤┘└┐┌┴┬
+- `arrows` - Directional arrows ←↖↑↗→↘↓↙
+- `triangles` - Geometric triangles ◢◣◤◥
+- `circles` - Smooth circle rotation ◐◑◒◓
+- `stars` - Twinkling stars ★☆✯✰
 
 **Custom Styles:**
 

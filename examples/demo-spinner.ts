@@ -44,7 +44,12 @@ async function demoBasicSpinner() {
   await spinner.succeed('Basic spinner complete!')
 }
 
-// Demo 2: Custom Colors
+/**
+ * Demo 2: Custom Colors
+ * 
+ * Demonstrates spinner with custom RGB and hex color configurations
+ * Shows how to apply specific colors to spinner text and backgrounds
+ */
 async function demoCustomColors() {
   console.log('\n🎨 Demo 2: Custom Colors')
   console.log('=========================')
@@ -58,7 +63,12 @@ async function demoCustomColors() {
   await spinner.succeed('Custom colors working!')
 }
 
-// Demo 3: Text Styling
+/**
+ * Demo 3: Text Styling
+ * 
+ * Demonstrates various text styling options including bold, italic, and underline
+ * Shows how to combine multiple text effects for enhanced visual presentation
+ */
 async function demoTextStyling() {
   console.log('\n🎭 Demo 3: Text Styling')
   console.log('========================')
@@ -74,7 +84,12 @@ async function demoTextStyling() {
   await spinner.succeed('Text styling applied!')
 }
 
-// Demo 4: Dynamic Updates
+/**
+ * Demo 4: Dynamic Updates
+ * 
+ * Demonstrates real-time text updates during spinner operation
+ * Shows how to change spinner text while maintaining the animation
+ */
 async function demoDynamicUpdates() {
   console.log('\n🔄 Demo 4: Dynamic Updates')
   console.log('===========================')
@@ -97,15 +112,23 @@ async function demoDynamicUpdates() {
   await spinner.succeed('Dynamic updates complete!')
 }
 
-// Demo 5: Different Styles
+/**
+ * Demo 5: Different Styles
+ * 
+ * Demonstrates all available predefined spinner animation patterns
+ * Shows how each style creates different visual effects
+ */
 async function demoDifferentStyles() {
   console.log('\n✨ Demo 5: Different Styles')
   console.log('============================')
   
   const styles = [
     { name: 'Dots', style: 'dots', color: 'green' },
-    { name: 'Bars', style: 'bars', color: 'blue' },
-    { name: 'Custom', style: ['🌍', '🌎', '🌏'], color: 'magenta' }
+    { name: 'Corners', style: 'corners', color: 'blue' },
+    { name: 'Arrows', style: 'arrows', color: 'magenta' },
+    { name: 'Triangles', style: 'triangles', color: 'cyan' },
+    { name: 'Circles', style: 'circles', color: 'yellow' },
+    { name: 'Stars', style: 'stars', color: 'orange' }
   ]
   
   for (const styleConfig of styles) {
@@ -120,7 +143,12 @@ async function demoDifferentStyles() {
   }
 }
 
-// Demo 6: Error Handling
+/**
+ * Demo 6: Error Handling
+ * 
+ * Demonstrates spinner failure state with error messaging
+ * Shows how to handle and display operation failures
+ */
 async function demoErrorHandling() {
   console.log('\n❌ Demo 6: Error Handling')
   console.log('===========================')
@@ -134,7 +162,12 @@ async function demoErrorHandling() {
   await spinner.fail('Operation failed as expected!')
 }
 
-// Demo 7: Warning and Info
+/**
+ * Demo 7: Warning and Info
+ * 
+ * Demonstrates warning and informational spinner states
+ * Shows different completion types for various operation outcomes
+ */
 async function demoWarningAndInfo() {
   console.log('\n⚠️ Demo 7: Warning and Info')
   console.log('============================')
@@ -156,7 +189,12 @@ async function demoWarningAndInfo() {
   await infoSpinner.info('Information collected successfully!')
 }
 
-// Demo 8: RGB Color Spectrum
+/**
+ * Demo 8: RGB Color Spectrum
+ * 
+ * Demonstrates RGB color format usage with various color values
+ * Shows how to specify colors using RGB coordinate system
+ */
 async function demoRGBSpectrum() {
   console.log('\n🌈 Demo 8: RGB Color Spectrum')
   console.log('==============================')
@@ -180,7 +218,12 @@ async function demoRGBSpectrum() {
   }
 }
 
-// Demo 9: Hex Colors
+/**
+ * Demo 9: Hex Colors
+ * 
+ * Demonstrates hexadecimal color format usage
+ * Shows how to specify colors using hex color codes
+ */
 async function demoHexColors() {
   console.log('\n🔷 Demo 9: Hex Colors')
   console.log('=======================')
@@ -202,7 +245,12 @@ async function demoHexColors() {
   }
 }
 
-// Demo 10: Background Colors
+/**
+ * Demo 10: Background Colors
+ * 
+ * Demonstrates background color customization options
+ * Shows how to set different background colors for spinner text
+ */
 async function demoBackgroundColors() {
   console.log('\n🎨 Demo 10: Background Colors')
   console.log('===============================')
@@ -225,7 +273,12 @@ async function demoBackgroundColors() {
   }
 }
 
-// Demo 11: Combined Styling
+/**
+ * Demo 11: Combined Styling
+ * 
+ * Demonstrates combining multiple styling options together
+ * Shows how to use colors, text effects, and custom spinner patterns
+ */
 async function demoCombinedStyling() {
   console.log('\n🎭 Demo 11: Combined Styling')
   console.log('=============================')
@@ -243,7 +296,12 @@ async function demoCombinedStyling() {
   await spinner.succeed('Combined styling working!')
 }
 
-// Demo 12: Colored Symbols Showcase
+/**
+ * Demo 12: Colored Symbols Showcase
+ * 
+ * Demonstrates how status symbols are colored while text remains readable
+ * Shows the visual distinction between colored symbols and normal text
+ */
 async function demoColoredSymbols() {
   console.log('\n🎯 Demo 12: Colored Symbols Showcase')
   console.log('=====================================')
@@ -273,7 +331,12 @@ async function demoColoredSymbols() {
   console.log('- Terminal stays clean for next commands')
 }
 
-// Demo 13: Grand Finale
+/**
+ * Demo 13: Grand Finale
+ * 
+ * Final demonstration combining multiple advanced features
+ * Shows the full range of ConsoleKit capabilities
+ */
 async function demoGrandFinale() {
   console.log('\n🚀 Demo 13: Grand Finale')
   console.log('==========================')
@@ -290,7 +353,47 @@ async function demoGrandFinale() {
   await spinner.succeed('ConsoleKit demo complete! 🎉')
 }
 
-// Main demo runner
+/**
+ * Demo 14: All Spinner Patterns Showcase
+ * 
+ * Comprehensive demonstration of all available spinner patterns
+ * Shows each pattern with its visual representation and description
+ */
+async function demoAllSpinnerPatterns() {
+  console.log('\n🎭 Demo 14: All Spinner Patterns Showcase')
+  console.log('==========================================')
+  console.log('Testing all 6 predefined spinner patterns:')
+  
+  const patterns = [
+    { name: 'Dots', style: 'dots', desc: '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏', color: 'green' },
+    { name: 'Corners', style: 'corners', desc: '│┤┘└┐┌┴┬', color: 'blue' },
+    { name: 'Arrows', style: 'arrows', desc: '←↖↑↗→↘↓↙', color: 'magenta' },
+    { name: 'Triangles', style: 'triangles', desc: '◢◣◤◥', color: 'cyan' },
+    { name: 'Circles', style: 'circles', desc: '◐◑◒◓', color: 'yellow' },
+    { name: 'Stars', style: 'stars', desc: '★☆✯✰', color: 'orange' }
+  ]
+  
+  for (const pattern of patterns) {
+    console.log(`\n${pattern.name}: ${pattern.desc}`)
+    
+    const spinner = ConsoleKit.spinner(`${pattern.name} pattern...`, {
+      style: pattern.style,
+      color: pattern.color,
+      bold: true
+    })
+    
+    await spinner.start()
+    await sleep(config.delay)
+    await spinner.succeed(`${pattern.name} pattern working!`)
+  }
+}
+
+/**
+ * Main demo runner function
+ * 
+ * Executes all spinner demonstrations in sequence
+ * Provides comprehensive testing of ConsoleKit spinner features
+ */
 async function runAllDemos() {
   console.log('🎬 ConsoleKit Comprehensive Feature Demo')
   console.log('========================================')
@@ -334,6 +437,9 @@ async function runAllDemos() {
     await demoColoredSymbols()
     await sleep(1000)
     
+    await demoAllSpinnerPatterns()
+    await sleep(1000)
+    
     await demoGrandFinale()
     
   } catch (error) {
@@ -354,4 +460,4 @@ if (import.meta.url === `file://${process.argv[1]}`) {
  * import { runAllDemos } from './demo-spinner.ts'
  * await runAllDemos()
  */
-export { runAllDemos }
+export { runAllDemos, demoAllSpinnerPatterns }

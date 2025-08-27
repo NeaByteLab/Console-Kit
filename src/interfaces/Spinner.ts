@@ -3,23 +3,19 @@
  *
  * Defines the visual animation patterns for spinners including:
  * - 'dots': Basic dot animation (⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏)
- * - 'bars': Bar-based animation patterns
- * - 'dots2' through 'dots12': Various dot pattern variations
+ * - 'corners': Elegant corner rotation (│┤┘└┐┌┴┬)
+ * - 'arrows': Directional arrows (←↖↑↗→↘↓↙)
+ * - 'triangles': Geometric triangles (◢◣◤◥)
+ * - 'circles': Smooth circle rotation (◐◑◒◓)
+ * - 'stars': Twinkling stars (★☆✯✰)
  */
 export type SpinnerAnimationStyle =
   | 'dots'
-  | 'bars'
-  | 'dots2'
-  | 'dots3'
-  | 'dots4'
-  | 'dots5'
-  | 'dots6'
-  | 'dots7'
-  | 'dots8'
-  | 'dots9'
-  | 'dots10'
-  | 'dots11'
-  | 'dots12'
+  | 'corners'
+  | 'arrows'
+  | 'triangles'
+  | 'circles'
+  | 'stars'
 
 /**
  * Available color options for terminal text and animation
@@ -60,7 +56,7 @@ export type ColorOption =
  * Configuration options for customizing spinner appearance and behavior
  *
  * All properties are optional and use sensible defaults when not specified.
- * Provides comprehensive control over spinner visual appearance and functionality.
+ * Provides control over spinner visual appearance and functionality.
  */
 export interface SpinnerOptions {
   /** Text to display alongside the spinner animation */

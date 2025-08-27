@@ -5,31 +5,50 @@ All notable changes to Console-Kit will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+---
+
+## [1.2.0] - 2025-08-28
 
 ### Added
 
-- Nothing yet
+- **6 Predefined Spinner Patterns**: Complete implementation of working spinner styles
+  - `dots` - Classic dot animation (⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏)
+  - `corners` - Elegant corner rotation (│┤┘└┐┌┴┬)
+  - `arrows` - Directional arrows (←↖↑↗→↘↓↙)
+  - `triangles` - Geometric triangles (◢◣◤◥)
+  - `circles` - Smooth circle rotation (◐◑◒◓)
+  - `stars` - Twinkling stars (★☆✯✰)
+- **Spinner Pattern System**: New `SPINNER_PATTERNS` constant with pattern mapping
+- **Style Resolution**: `getSpinnerPattern()` method for dynamic pattern selection
+- **Enhanced Demo**: New "All Spinner Patterns Showcase" demonstration
+- **Comprehensive JSDoc**: Added detailed documentation to all demo functions
 
 ### Changed
 
-- Nothing yet
-
-### Deprecated
-
-- Nothing yet
-
-### Removed
-
-- Nothing yet
+- **Spinner Styles**: Reduced from 13 overpromised styles to 6 working patterns
+- **Documentation Accuracy**: Updated README and CHANGELOG to reflect actual features
+- **Default Spinner**: Now uses `SPINNER_PATTERNS.dots` for consistency
+- **Type Safety**: Improved spinner pattern handling with proper fallbacks
 
 ### Fixed
 
-- Nothing yet
+- **Overpromised Features**: Removed non-functional spinner styles (dots2-dots12, bars)
+- **Documentation Mismatch**: Aligned README claims with actual implementation
+- **Spinner Consistency**: All predefined styles now work as documented
 
-### Security
+### Technical Improvements
 
-- Nothing yet
+- **Code Organization**: Centralized spinner patterns in dedicated constant
+- **Pattern Resolution**: Smart fallback to dots pattern if style not found
+- **Build Process**: Maintained existing build pipeline with path alias resolution
+- **Type Definitions**: Updated `SpinnerAnimationStyle` to reflect actual patterns
+
+### Examples
+
+- **Pattern Showcase**: Demo 14 demonstrates all 6 spinner patterns
+- **Visual Representation**: Each pattern shows its character sequence
+- **Color Variations**: Different colors for each pattern type
+- **Real-time Testing**: All patterns tested and verified working
 
 ---
 
@@ -96,7 +115,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Core Spinner Class**: Terminal loading animation implementation
 - **ConsoleKit Main Class**: Static factory methods for creating UI elements
-- **13 Predefined Spinner Styles**: dots, bars, dots2-dots12 patterns
+- **6 Predefined Spinner Styles**: dots, corners, arrows, triangles, circles, stars patterns
 - **Custom Animation Support**: User-defined spinner character arrays
 - **25 Predefined Colors**: Standard, bright, and extended color palette
 - **RGB Color Support**: Custom RGB values (e.g., "255,100,150")
