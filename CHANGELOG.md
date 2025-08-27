@@ -33,6 +33,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.1] - 2025-08-28
+
+### Fixed
+
+- **Package Dependencies**: Removed leftover local dependency reference from testing
+- **Package.json Cleanup**: Cleaned up test dependency that could cause installation issues
+
+### Technical Details
+
+- Removed `"@neabyte/console-kit": "file:neabyte-console-kit-1.1.0.tgz"` from dependencies
+- Fixed package.json to prevent local file dependency issues
+- Ensures clean npm package installation for users
+
+---
+
 ## [1.1.0] - 2025-08-28
 
 ### Added
@@ -133,12 +148,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version History
 
+- **1.1.1** - Fixed package dependencies and cleaned up test artifacts
 - **1.1.0** - Added progress bar component with multiple styles and validation
 - **1.0.0** - Initial production release with spinner functionality
 
 ---
 
 ## Release Notes
+
+### 1.1.1 - Package Cleanup Release
+
+This release fixes package dependency issues and cleans up test artifacts.
+
+**Key Fixes:**
+
+- Removed leftover local dependency reference from testing
+- Cleaned up package.json to prevent installation issues
+- Ensures npm package works correctly for all users
+
+**Breaking Changes:**
+
+- None - cleanup only
+
+**Migration Guide:**
+
+- Not applicable - cleanup release
 
 ### 1.1.0 - Progress Bar Release
 
